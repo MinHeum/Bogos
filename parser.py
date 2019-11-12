@@ -1,6 +1,3 @@
-# Parser (CU, EMART24, GS25, Ministop, SevenEleven) 버전을 전부 합쳐서 model 에 일괄 올리는 작업을 할 예정임.
-#TODO: Parser 를 최종 완성하고 나서 적은 양의 페이지만 불러오도롱 세팅해놓았던것을 전체 페이지를 로드하게 하고 최종 확인 해보기!!
-
 from selenium import webdriver
 import time
 from selenium.common.exceptions import NoSuchElementException
@@ -11,11 +8,11 @@ import os
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Bogo.settings')
 import django
 django.setup()
-from parsed_data.models import Product
-from parsed_data.models import Product2
-from parsed_data.models import Product3
-from parsed_data.models import Product4
-from parsed_data.models import Product5
+from parsed_data.models import ProductCU
+from parsed_data.models import ProductEmart24
+from parsed_data.models import ProductGS25
+from parsed_data.models import ProductSevenvEleven
+from parsed_data.models import ProductMiniStop
 import platform
 
 # Chrome 창을 띄우지 않고(headless 하게) driver 를 사용하기 위한 options 변수 선언 및 설정 그리고 driver 선언
@@ -308,19 +305,20 @@ def seveneleven_parser():
             break
     return prod_list
 
+
 if __name__ == '__main__':
     parsed_data = cu_parser()
     for data in parsed_data:
-        Product(prodName=data[0], prodPrice=data[1], prodImg=data[2], prodEventType=data[3]).save()
+        ProductCU(prodName=data[0], prodPrice=data[1], prodImg=data[2], prodEventType=data[3]).save()
     parsed_data = emart_parser()
     for data in parsed_data:
-        Product2(prodName=data[0], prodPrice=data[1], prodImg=data[2], prodEventType=data[3]).save()
+        ProductEmart24(prodName=data[0], prodPrice=data[1], prodImg=data[2], prodEventType=data[3]).save()
     parsed_data = gs25_parser()
     for data in parsed_data:
-        Product3(prodName=data[0], prodPrice=data[1], prodImg=data[2], prodEventType=data[3]).save()
+        ProductGS25(prodName=data[0], prodPrice=data[1], prodImg=data[2], prodEventType=data[3]).save()
     parsed_data = ministop_parser()
     for data in parsed_data:
-        Product4(prodName=data[0], prodPrice=data[1], prodImg=data[2], prodEventType=data[3]).save()
+        ProductSevenvEleven(prodName=data[0], prodPrice=data[1], prodImg=data[2], prodEventType=data[3]).save()
     parsed_data = seveneleven_parser()
     for data in parsed_data:
-        Product5(prodName=data[0], prodPrice=data[1], prodImg=data[2], prodEventType=data[3]).save()
+        ProductMiniStop(prodName=data[0], prodPrice=data[1], prodImg=data[2], prodEventType=data[3]).save()

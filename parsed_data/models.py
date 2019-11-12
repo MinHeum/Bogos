@@ -1,8 +1,9 @@
 # parsed_data/models.py
 from django.db import models
 
+
 # CU Product
-class Product(models.Model):
+class ProductCU(models.Model):
     prodId = models.AutoField(primary_key=True)
     prodName = models.CharField(max_length=255, unique=True, null=False)
     prodType = models.CharField(max_length=20)
@@ -18,7 +19,7 @@ class Product(models.Model):
 
 
 # Emart24 Product
-class Product2(models.Model):
+class ProductEmart24(models.Model):
     prodId = models.AutoField(primary_key=True)
     prodName = models.CharField(max_length=255, unique=True, null=False)
     prodType = models.CharField(max_length=20)
@@ -34,7 +35,7 @@ class Product2(models.Model):
 
 
 # GS25 Product
-class Product3(models.Model):
+class ProductGS25(models.Model):
     prodId = models.AutoField(primary_key=True)
     prodName = models.CharField(max_length=255, unique=True, null=False)
     prodType = models.CharField(max_length=20)
@@ -50,7 +51,7 @@ class Product3(models.Model):
 
 
 # SevenEleven Product
-class Product4(models.Model):
+class ProductSevenvEleven(models.Model):
     prodId = models.AutoField(primary_key=True)
     prodName = models.CharField(max_length=255, unique=True, null=False)
     prodType = models.CharField(max_length=20)
@@ -66,7 +67,7 @@ class Product4(models.Model):
 
 
 # MiniStop Product
-class Product5(models.Model):
+class ProductMiniStop(models.Model):
     prodId = models.AutoField(primary_key=True)
     prodName = models.CharField(max_length=255, unique=True, null=False)
     prodType = models.CharField(max_length=20)
