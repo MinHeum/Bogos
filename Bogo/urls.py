@@ -20,10 +20,17 @@ import parsed_data.views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', parsed_data.views.intro, name="intro"),
+    path('parsed_data/login/',parsed_data.views.login, name="login"),
+    path('accounts/',include('allauth.urls')),
     path('parsed_data/home/', parsed_data.views.home, name="home"),
     path('parsed_data/gs25/', parsed_data.views.gs25, name="gs25"),
     path('parsed_data/seven/', parsed_data.views.seven, name="seven"),
     path('parsed_data/emart/', parsed_data.views.emart, name="emart"),
     path('parsed_data/cu/', parsed_data.views.cu, name="cu"),
     path('parsed_data/ministop/', parsed_data.views.ministop, name="ministop"),
+
+    path('parsed_data/post/',parsed_data.views.post, name = 'post'),
+    path('parsed_data/post/<int:post_id>',parsed_data.views.detail, name = 'post_detail'),
+    path('parsed_data/post/new',parsed_data.views.new, name = 'post_new'),
+    path('parsed_data/post/create',parsed_data.views.create, name='post_create'),
 ]

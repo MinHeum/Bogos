@@ -7,11 +7,8 @@ from django.core.paginator import Paginator
 
 # Create your views here.
 
-def home(request):
-    return render(request, 'bogo/home.html')
-
 def login(request):
-    return render(request, 'bogo/login.html')
+    return render(request, 'login.html')
 
 @login_required
 def post(request):
@@ -32,7 +29,7 @@ def create(request):
     post.body = request.GET['body']
     post.pub_date = timezone.datetime.now()
     post.save()
-    return redirect('/post/' + str(post.id))
+    return redirect('http://127.0.0.1:8000/parsed_data/post/'+str(post.id))
 
 
 from django.shortcuts import render

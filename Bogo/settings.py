@@ -140,7 +140,7 @@ AUTHENTICATION_BACKENDS = (
 SITE_ID = 1
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
-LOGIN_URL = '/login'
+LOGIN_URL = '/parsed_data/login'
 
 import dj_database_url
 db_from_env = dj_database_url.config(conn_max_age=500)
