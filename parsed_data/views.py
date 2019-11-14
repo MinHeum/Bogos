@@ -36,11 +36,11 @@ def create(request):
 
 
 from django.shortcuts import render
-from .models import Product
-from .models import Product2
-from .models import Product3
-from .models import Product4
-from .models import Product5
+from .models import ProductCU
+from .models import ProductEmart24
+from .models import ProductGS25
+from .models import ProductSevenvEleven
+from .models import ProductMiniStop
 from django.core.paginator import Paginator
 from django.utils import timezone
 
@@ -54,8 +54,8 @@ def home(request):
 
 
 def gs25(request):
-    items = Product5.objects
-    item_list = Product5.objects.all()
+    items = ProductGS25.objects
+    item_list = ProductGS25.objects.all()
     paginator = Paginator(item_list, 6)
     page = request.GET.get('page')
     posts = paginator.get_page(page)
@@ -64,8 +64,8 @@ def gs25(request):
 
 
 def seven(request):
-    items = Product4.objects
-    item_list = Product4.objects.all()
+    items = ProductSevenvEleven.objects
+    item_list = ProductSevenvEleven.objects.all()
     paginator = Paginator(item_list, 6)
     page = request.GET.get('page')
     posts = paginator.get_page(page)
@@ -74,8 +74,8 @@ def seven(request):
 
 
 def emart(request):
-    items = Product2.objects
-    item_list = Product2.objects.all()
+    items = ProductEmart24.objects
+    item_list = ProductEmart24.objects.all()
     paginator = Paginator(item_list, 6)
     page = request.GET.get('page')
     posts = paginator.get_page(page)
@@ -84,8 +84,8 @@ def emart(request):
 
 
 def ministop(request):
-    items = Product3.objects
-    item_list = Product3.objects.all()
+    items = ProductMiniStop.objects
+    item_list = ProductMiniStop.objects.all()
     paginator = Paginator(item_list, 6)
     page = request.GET.get('page')
     posts = paginator.get_page(page)
@@ -94,8 +94,8 @@ def ministop(request):
 
 
 def cu(request):
-    items = Product.objects
-    item_list = Product.objects.all()
+    items = ProductCU.objects
+    item_list = ProductCU.objects.all()
     paginator = Paginator(item_list,6)
     page = request.GET.get('page')
     posts = paginator.get_page(page)
