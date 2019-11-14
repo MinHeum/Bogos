@@ -1,15 +1,15 @@
 from django.contrib import admin
-from .models import Product
-from .models import Product2
-from .models import Product3
-from .models import Product4
-from .models import Product5
+from .models import ProductCU
+from .models import ProductEmart24
+from .models import ProductGS25
+from .models import ProductSevenvEleven
+from .models import ProductMiniStop
 from .models import Post
 
 admin.site.register(Post)
-admin.site.register(Product)
-admin.site.register(Product2)
-admin.site.register(Product3)
-admin.site.register(Product4)
-admin.site.register(Product5)
+admin.site.register(ProductCU)
+admin.site.register(ProductEmart24)
+admin.site.register(ProductGS25)
+admin.site.register(ProductSevenvEleven)
+admin.site.register(ProductMiniStop)
 
