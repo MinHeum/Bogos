@@ -2,6 +2,9 @@
 
 ### 사용법
 
+Chrome version = '78.0.3904.70'  
+위 크롬버전이 아닐 경우에 chromedriver 에러가 발생합니다.
+
 #### 1. clone  
 ```
 git clone https://github.com/MinHeum/Bogos.git
