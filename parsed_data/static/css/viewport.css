@@ -1,0 +1,22 @@
+@media (min-width: 320px) and (max-width: 600px) {
+    .navbar a {
+        float: none;
+        width: 100%;
+    }
+
+    .dropdown button {
+        float: none;
+        width: 100%;
+    }
+
+    .nav-item a {
+        float: none;
+        width: 100%;
+    }
+
+    .collapse {
+        display: block;
+        height: auto !important;
+        visibility: visible;
+    }
+}
