@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from selenium import webdriver
 import time
 from selenium.common.exceptions import NoSuchElementException
@@ -14,13 +16,32 @@ from parsed_data.models import ProductGS25
 from parsed_data.models import ProductSevenvEleven
 from parsed_data.models import ProductMiniStop
 import platform
+import os
+
+os.chmod('./chromedriver_mac', 777)
+os.chmod('./chromedriver_linux', 777)
+os.chmod('./chromedriver.exe', 777)
+driver_path = ''
+osname = platform.system()
+print("OS=>" + osname)
+
 
 # Chrome 창을 띄우지 않고(headless 하게) driver 를 사용하기 위한 options 변수 선언 및 설정 그리고 driver 선언
 options = webdriver.ChromeOptions()
 options.add_argument('headless')
 options.add_argument('window-size=1920x1080')
 options.add_argument("--disable-gpu")
-driver = webdriver.Chrome('./chromedriver', options=options)
+if osname == "Darwin":
+    driver_path= str('./chromedriver_mac')
+elif osname == "Windows":
+    driver_path = str('./chromedriver.exe')
+elif osname == "Linux":
+    driver_path = str('./chromedriver_linux')
+else:
+    print("driver selection error ")
+print("Driver =>" + driver_path)
+
+driver = webdriver.Chrome(driver_path, options=options)
 driver.implicitly_wait(3)
 
 # CU Parser
@@ -32,7 +53,7 @@ def cu_parser():
         try:
             driver.find_element_by_css_selector(
                 '#contents > div.relCon > div.prodListWrap > div > div.prodListBtn-w > a').click()
-            time.sleep(1)
+            time.sleep(0.5)
         # ElementClickInterceptedException Exception 이 발생하면 1초 대기한다.
         except ElementClickInterceptedException:
             time.sleep(1)
@@ -260,6 +281,8 @@ def seveneleven_parser():
         except ElementNotInteractableException:
             print("More Ended...")
             break
+        except NoSuchElementException:
+            print("More Ended...")
 
     num = 2
     while 1:
@@ -307,18 +330,18 @@ def seveneleven_parser():
 
 
 if __name__ == '__main__':
-    parsed_data = cu_parser()
-    for data in parsed_data:
-        ProductCU(prodName=data[0], prodPrice=data[1], prodImg=data[2], prodEventType=data[3]).save()
-    parsed_data = emart_parser()
-    for data in parsed_data:
-        ProductEmart24(prodName=data[0], prodPrice=data[1], prodImg=data[2], prodEventType=data[3]).save()
-    parsed_data = gs25_parser()
-    for data in parsed_data:
-        ProductGS25(prodName=data[0], prodPrice=data[1], prodImg=data[2], prodEventType=data[3]).save()
-    parsed_data = ministop_parser()
-    for data in parsed_data:
-        ProductSevenvEleven(prodName=data[0], prodPrice=data[1], prodImg=data[2], prodEventType=data[3]).save()
+    # parsed_data = cu_parser()
+    # for data in parsed_data:
+    #     ProductCU(prodName=data[0], prodPrice=data[1], prodImg=data[2], prodEventType=data[3]).save()
+    # parsed_data = emart_parser()
+    # for data in parsed_data:
+    #     ProductEmart24(prodName=data[0], prodPrice=data[1], prodImg=data[2], prodEventType=data[3]).save()
+    # parsed_data = gs25_parser()
+    # for data in parsed_data:
+    #     ProductGS25(prodName=data[0], prodPrice=data[1], prodImg=data[2], prodEventType=data[3]).save()
+    # parsed_data = ministop_parser() # 작동안됨
+    # for data in parsed_data:
+    #     ProductSevenvEleven(prodName=data[0], prodPrice=data[1], prodImg=data[2], prodEventType=data[3]).save()
     parsed_data = seveneleven_parser()
     for data in parsed_data:
         ProductMiniStop(prodName=data[0], prodPrice=data[1], prodImg=data[2], prodEventType=data[3]).save()
