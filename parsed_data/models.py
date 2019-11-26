@@ -5,7 +5,7 @@ from django.db import models
 # CU Product
 class ProductCU(models.Model):
     prodId = models.AutoField(primary_key=True)
-    prodName = models.CharField(max_length=255, unique=True, null=False)
+    prodName = models.CharField(max_length=255, null=False)
     prodType = models.CharField(max_length=20)
     prodEventType = models.CharField(max_length=20, default="DEFAULT")
     prodPrice = models.PositiveIntegerField(null=False)
@@ -21,7 +21,7 @@ class ProductCU(models.Model):
 # Emart24 Product
 class ProductEmart24(models.Model):
     prodId = models.AutoField(primary_key=True)
-    prodName = models.CharField(max_length=255, unique=True, null=False)
+    prodName = models.CharField(max_length=255, null=False)
     prodType = models.CharField(max_length=20)
     prodEventType = models.CharField(max_length=20, default="DEFAULT")
     prodPrice = models.PositiveIntegerField(null=False)
@@ -37,7 +37,7 @@ class ProductEmart24(models.Model):
 # GS25 Product
 class ProductGS25(models.Model):
     prodId = models.AutoField(primary_key=True)
-    prodName = models.CharField(max_length=255, unique=True, null=False)
+    prodName = models.CharField(max_length=255, null=False)
     prodType = models.CharField(max_length=20)
     prodEventType = models.CharField(max_length=20, default="DEFAULT")
     prodPrice = models.PositiveIntegerField(null=False)
@@ -53,7 +53,7 @@ class ProductGS25(models.Model):
 # SevenEleven Product
 class ProductSevenvEleven(models.Model):
     prodId = models.AutoField(primary_key=True)
-    prodName = models.CharField(max_length=255, unique=True, null=False)
+    prodName = models.CharField(max_length=255, null=False)
     prodType = models.CharField(max_length=20)
     prodEventType = models.CharField(max_length=20, default="DEFAULT")
     prodPrice = models.PositiveIntegerField(null=False)
@@ -69,7 +69,7 @@ class ProductSevenvEleven(models.Model):
 # MiniStop Product
 class ProductMiniStop(models.Model):
     prodId = models.AutoField(primary_key=True)
-    prodName = models.CharField(max_length=255, unique=True, null=False)
+    prodName = models.CharField(max_length=255, null=False)
     prodType = models.CharField(max_length=20)
     prodEventType = models.CharField(max_length=20, default="DEFAULT")
     prodPrice = models.PositiveIntegerField(null=False)
