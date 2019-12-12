@@ -53,7 +53,7 @@ def home(request):
 def gs25(request):
     items = ProductGS25.objects
     item_list = ProductGS25.objects.all()
-    paginator = Paginator(item_list, 6)
+    paginator = Paginator(item_list, 15)
     page = request.GET.get('page')
     posts = paginator.get_page(page)
 
@@ -63,7 +63,7 @@ def gs25(request):
 def seven(request):
     items = ProductSevenvEleven.objects
     item_list = ProductSevenvEleven.objects.all()
-    paginator = Paginator(item_list, 6)
+    paginator = Paginator(item_list, 15)
     page = request.GET.get('page')
     posts = paginator.get_page(page)
 
@@ -73,7 +73,7 @@ def seven(request):
 def emart(request):
     items = ProductEmart24.objects
     item_list = ProductEmart24.objects.all()
-    paginator = Paginator(item_list, 6)
+    paginator = Paginator(item_list, 15)
     page = request.GET.get('page')
     posts = paginator.get_page(page)
 
@@ -83,7 +83,7 @@ def emart(request):
 def ministop(request):
     items = ProductMiniStop.objects
     item_list = ProductMiniStop.objects.all()
-    paginator = Paginator(item_list, 6)
+    paginator = Paginator(item_list, 15)
     page = request.GET.get('page')
     posts = paginator.get_page(page)
 
