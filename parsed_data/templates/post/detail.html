@@ -1,15 +1,67 @@
 {% block content %}
-<div id=post>
-    <div id="user_name"><br><br>
-        <h1>아이디 : {{post.user_name}}</h1>
-    <div id="title"><br><br>
-        <h1> 제목 : {{post.title}} </h1>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOGOS</title>
+    <link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Raleway:600' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{% static 'css/viewport.css' %}">
+    <link rel="stylesheet" href="{% static 'css/all2.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %} ">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-grid.css' %} ">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-reboot.css' %} ">
+    <link rel="script" href="{% static 'js/bootstrap.js' %}">
+</head>
+<body>
+    <div class="banner">
+        <a href="{% url 'home' %}"><img src="{% static 'img/Bogos_logo.png' %}" alt="banner" width="10%" height="10%"></a>
     </div>
-    <div id="date">
-        <p> 작성 날짜 : {{post.pub_date}} </p>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" style="border-radius: 8px">
+            <ul class="nav navbar-nav mr-auto">
+                <a class="navbar-brand" href="{% url 'home' %}">
+                <img src="{% static 'img/cart.png' %}" height="28px" width="36px">HOME</a>
+
+                <a class="navbar-brand" href="{% url 'gs25' %}">GS25</a>
+                <a class="navbar-brand" href="{% url 'cu' %}">CU</a>
+                <a class="navbar-brand" href="{% url 'emart' %}">이마트24</a>
+                <a class="navbar-brand" href="{% url 'ministop' %}">미니스톱</a>
+                <a class="navbar-brand" href="{% url 'seven' %}">세븐일레븐</a>
+                <a class="navbar-brand " href="/parsed_data/post">게시판</a>
+            </ul>
+            <ul class="nav navbar-nav">
+                <li>
+                    <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-warning" type="submit">검색</button>
+                    </form>
+                </li>
+                <li>
+                    <a class="btn btn-primary" href="/parsed_data/login"  style="margin-left: 10px">로그인</a>
+                </li>
+            </ul>
+        </nav>
     </div>
-    <div id="summary">
-        <p><br><br>{{post.body}} </p>
+    <div class="container">
+        <div id=post style="">
+            <div id="user_name">
+                <h3>작성자 : {{post.user_name}}</h3>
+            </div>
+            <div id="title"><br><br>
+                <h2>제목 : {{post.title}} </h2>
+            </div>
+            <div id="date" align="right" style="margin-bottom: 2rem">
+                <p> 작성 날짜 : {{post.pub_date}} </p>
+            </div>
+            <div id="summary">
+                <p>{{post.body|linebreaks}} </p>
+            </div>
+        </div>
+        <a href="/parsed_data/post" class="btn btn-outline-dark float-right" >목록</a>
     </div>
 </div>
 {% endblock %}
+</body>

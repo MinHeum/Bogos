@@ -1,15 +1,68 @@
-<h1><a href="new">글쓰기</a></h1>
 {% block content %}
-{% for post in posts.all %}
-<div class="post_post">
-    <div id="user_name"><h1>유저 아이디 : {{post.user_name}}</h1></div>
-    <div id="post_title"><h1> {{post.title}} </h1></div>
-    <div id="post_date"><p> {{post.pub_date}} </p></div> 
-    <div id="post_summary">{{post.summary}}<a href="{% url 'post_detail' post.id %}">...more</a> </p>
-    <br><br></div>
-</div>
-{% endfor %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOGOS</title>
+    <link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Raleway:600' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{% static 'css/viewport.css' %}">
+    <link rel="stylesheet" href="{% static 'css/all2.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %} ">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-grid.css' %} ">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-reboot.css' %} ">
+    <link rel="script" href="{% static 'js/bootstrap.js' %}">
+</head>
+<body>
+    <div class="banner">
+        <a href="{% url 'home' %}"><img src="{% static 'img/Bogos_logo.png' %}" alt="banner" width="10%" height="10%"></a>
+    </div>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" style="border-radius: 8px">
+            <ul class="nav navbar-nav mr-auto">
+                <a class="navbar-brand" href="{% url 'home' %}">
+                <img src="{% static 'img/cart.png' %}" height="28px" width="36px">HOME</a>
 
+                <a class="navbar-brand" href="{% url 'gs25' %}">GS25</a>
+                <a class="navbar-brand" href="{% url 'cu' %}">CU</a>
+                <a class="navbar-brand" href="{% url 'emart' %}">이마트24</a>
+                <a class="navbar-brand" href="{% url 'ministop' %}">미니스톱</a>
+                <a class="navbar-brand" href="{% url 'seven' %}">세븐일레븐</a>
+                <a class="navbar-brand " href="/parsed_data/post">게시판</a>
+            </ul>
+            <ul class="nav navbar-nav">
+                <li>
+                    <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-warning" type="submit">검색</button>
+                    </form>
+                </li>
+                <li>
+                    <a class="btn btn-primary" href="/parsed_data/login"  style="margin-left: 10px">로그인</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="container" style="margin-top: 3rem; margin-bottom: 3rem;">
+        <div class="row row-cols-1 row-cols-md-3" style="">
+          {% for post in posts.all %}
+            <div class="col-md-5" style="margin: 2rem">
+                <div class="card h-100">
+                    <div class="card-body" style="  padding-bottom:80px;">
+                        <div class="card-title" style="font-size: x-large">{{post.title}}</div>
+                        <div class="card-text text-right" id="post_date" style="margin-top: 1rem; margin-bottom: 1rem">{{post.pub_date}} </div>
+                        <div class="card-text">{{post.summary}} ...</div>
+                        <div class="card-footer bg-transparent" style="position:absolute; bottom: 0">
+                            <a href="{% url 'post_detail' post.id %}" class=" btn btn-outline-info">더보기</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          {% endfor %}
+        </div>
+        <a href="new" class="btn btn-outline-dark float-right" style="alignment: right" >글쓰기</a>
+    </div>
 {% endblock %}
-
 </body>
