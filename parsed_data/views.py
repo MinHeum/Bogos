@@ -29,7 +29,7 @@ def create(request):
     post.body = request.GET['body']
     post.pub_date = timezone.datetime.now()
     post.save()
-    return redirect('http://127.0.0.1:8000/parsed_data/post/'+str(post.id))
+    return redirect('http://bogo.us-east-2.elasticbeanstalk.com/parsed_data/post/'+str(post.id))
 
 
 from django.shortcuts import render
