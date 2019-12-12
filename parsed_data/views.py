@@ -93,7 +93,7 @@ def ministop(request):
 def cu(request):
     items = ProductCU.objects
     item_list = ProductCU.objects.all()
-    paginator = Paginator(item_list,6)
+    paginator = Paginator(item_list, 15)
     page = request.GET.get('page')
     posts = paginator.get_page(page)
 

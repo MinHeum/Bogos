@@ -19,7 +19,7 @@ import parsed_data.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', parsed_data.views.intro, name="intro"),
+    path('', parsed_data.views.home, name="home"),
     path('parsed_data/login/',parsed_data.views.login, name="login"),
     path('accounts/',include('allauth.urls')),
     path('parsed_data/home/', parsed_data.views.home, name="home"),

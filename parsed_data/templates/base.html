@@ -1,14 +1,14 @@
-{% load socialaccount %}
-{% providers_media_js %}
 {% load static %}
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>보고보고</title>
-    <link rel="stylesheet" href="{% static 'css/viewport.css' %}">
-    <link rel="stylesheet" href="{% static 'css/all2.css' %}">
+    <title>BOGOS</title>
     <link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Raleway:600' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{% static 'css/viewport.css' %}">
+    <link rel="stylesheet" href="{% static 'css/all2.css' %}">
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %} ">
     <link rel="stylesheet" href="{% static 'css/bootstrap-grid.css' %} ">
     <link rel="stylesheet" href="{% static 'css/bootstrap-reboot.css' %} ">
@@ -19,7 +19,7 @@
         <img src="{% static 'img/Bogos_logo.png' %}" href="{% url 'home' %}" alt="banner" width="10%" height="10%">
     </div>
     <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" style="border-radius: 8px">
             <ul class="nav navbar-nav mr-auto">
                 <a class="navbar-brand" href="{% url 'home' %}">
                 <img src="{% static 'img/cart.png' %}" height="28px" width="36px">HOME</a>
@@ -31,7 +31,6 @@
                 <a class="navbar-brand" href="{% url 'seven' %}">세븐일레븐</a>
                 <a class="navbar-brand " href="/parsed_data/post">게시판</a>
             </ul>
-
             <ul class="nav navbar-nav">
                 <li>
                     <form class="form-inline my-2 my-lg-0">
@@ -45,20 +44,6 @@
             </ul>
         </nav>
     </div>
-    <div class="container">
-        <br><br>
-        <ul class="mr-auto">
-            <p>
-                <img src="{% static 'img/signup_logo.png' %}" width="10%">
-            </p>
-            <a class="btn btn-dark mr-1" href="/accounts/signup">회원가입</a><br>
-            {% if user.is_authenticated %}
-            <a class="btn btn-warning" href="/accounts/logout">로그아웃</a>
-            {{user.username}} 님이 로그인 중
-            {% else %}
-            로그인을 하시고 BOGOS의 더 많은 기능을 사용해보세요!<br>
-            <a class="btn btn-danger" href="{% provider_login_url 'google' %}">구글 아이디로 로그인</a><br>
-            {% endif %}
-        </ul>
-    </div>
+    {% block body %}
+    {% endblock %}
 </body>
