@@ -1,6 +1,51 @@
-{% extends 'base.html' %}
 {% load static %}
-{% block body %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOGOS</title>
+    <link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Raleway:600' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{% static 'css/viewport.css' %}">
+    <link rel="stylesheet" href="{% static 'css/all2.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %} ">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-grid.css' %} ">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-reboot.css' %} ">
+    <link rel="script" href="{% static 'js/bootstrap.js' %}">
+</head>
+<body>
+    <div class="banner">
+        <img src="{% static 'img/Bogos_logo.png' %}" href="{% url 'home' %}" alt="banner" width="10%" height="10%">
+    </div>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" style="border-radius: 8px">
+            <ul class="nav navbar-nav mr-auto">
+                <a class="navbar-brand" href="{% url 'home' %}">
+                <img src="{% static 'img/cart.png' %}" height="28px" width="36px">HOME</a>
+
+                <a class="navbar-brand" href="{% url 'gs25' %}">GS25</a>
+                <a class="navbar-brand" href="{% url 'cu' %}">CU</a>
+                <a class="navbar-brand" href="{% url 'emart' %}">이마트24</a>
+                <a class="navbar-brand" href="{% url 'ministop' %}">미니스톱</a>
+                <a class="navbar-brand" href="{% url 'seven' %}">세븐일레븐</a>
+                <a class="navbar-brand " href="/parsed_data/post">게시판</a>
+            </ul>
+            <ul class="nav navbar-nav">
+                <li>
+                    <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-warning" type="submit">검색</button>
+                    </form>
+                </li>
+                <li>
+                    <a class="btn btn-primary" href="/parsed_data/login"  style="margin-left: 10px">로그인</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</body>
 <section class="container">
     <div id="blog">
         <div class="post">
@@ -62,4 +107,3 @@
         </div>
     </div>
 </section>
-{% endblock %}
