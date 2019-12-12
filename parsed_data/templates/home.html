@@ -1,6 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +14,25 @@
     <link rel="stylesheet" href="{% static 'css/bootstrap-grid.css' %} ">
     <link rel="stylesheet" href="{% static 'css/bootstrap-reboot.css' %} ">
     <link rel="script" href="{% static 'js/bootstrap.js' %}">
+    <script src="http://code.jquery.com/jquery-1.11.0.js"></script>
+
+    <style>
+        /* Always set the map height explicitly to define the size of the div
+             * element that contains the map. */
+        #map {
+            height: 100%;
+        }
+
+        /* Optional: Makes the sample page fill the window. */
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
+
 <body>
     <div class="banner">
         <a href="{% url 'home' %}"><img src="{% static 'img/Bogos_logo.png' %}" alt="banner" width="10%" height="10%"></a>
@@ -22,7 +41,7 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light" style="border-radius: 8px">
             <ul class="nav navbar-nav mr-auto">
                 <a class="navbar-brand" href="{% url 'home' %}">
-                <img src="{% static 'img/cart.png' %}" height="28px" width="36px">HOME</a>
+                    <img src="{% static 'img/cart.png' %}" height="28px" width="36px">HOME</a>
 
                 <a class="navbar-brand" href="{% url 'gs25' %}">GS25</a>
                 <a class="navbar-brand" href="{% url 'cu' %}">CU</a>
@@ -34,14 +53,102 @@
             <ul class="nav navbar-nav">
                 <li>
                     <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-warning" type="submit">검색</button>
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-warning" type="submit">검색</button>
                     </form>
                 </li>
                 <li>
-                    <a class="btn btn-primary" href="/parsed_data/login"  style="margin-left: 10px">로그인</a>
+                    <a class="btn btn-primary" href="/parsed_data/login" style="margin-left: 10px">로그인</a>
                 </li>
             </ul>
         </nav>
     </div>
+    <div id="map" style="margin: 5rem">
+        <script>
+            // Note: This example requires that you consent to location sharing when
+            // prompted by your browser. If you see the error "The Geolocation service
+            // failed.", it means you probably did not give permission for the browser to
+            // locate you.
+            var map, infoWindow;
+            function initMap() {
+                map = new google.maps.Map(document.getElementById('map'), {
+                    center: { lat: 35.143141, lng: 129.095182 },
+                    zoom: 17
+                });
+                infoWindow = new google.maps.InfoWindow;
+                
+                var marker = new google.maps.Marker({
+                    position: { lat: 35.137411, lng: 129.100943 },
+                    map: map,
+                    title: '7E',
+                    label: '7E',
+                });
+                var marker = new google.maps.Marker({
+                    position: { lat: 35.138823, lng: 129.101258 },
+                    map: map,
+                    title: 'CU',
+                    label: 'CU',
+                });
+                var marker = new google.maps.Marker({
+                    position: { lat: 35.137221, lng: 129.101369 },
+                    map: map,
+                    title: 'CU',
+                    label: 'CU',
+                });
+                var marker = new google.maps.Marker({
+                    position: { lat: 35.137598, lng: 129.102618 },
+                    map: map,
+                    title: 'MI',
+                    label: 'MI',
+                });
+                var marker = new google.maps.Marker({
+                    position: { lat: 35.136709, lng: 129.099026 },
+                    map: map,
+                    title: 'GS',
+                    label: 'GS',
+                });
+                var marker = new google.maps.Marker({
+                    position: { lat: 35.135911, lng: 129.097701 },
+                    map: map,
+                    title: 'GS',
+                    label: 'GS',
+                });
+                // Try HTML5 geolocation.
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(function (position) {
+                        var pos = {
+                            lat: position.coords.latitude,
+                            lng: position.coords.longitude
+                        };
+                        infoWindow.setPosition(pos);
+                        infoWindow.setContent('현재위치');
+                        infoWindow.open(map);
+                        map.setCenter(pos);
+                    }, function () {
+                        handleLocationError(true, infoWindow, map.getCenter());
+                    });
+                } else {
+                    // Browser doesn't support Geolocation
+                    handleLocationError(false, infoWindow, map.getCenter());
+                }
+            }
+
+            function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+                infoWindow.setPosition(pos);
+                infoWindow.setContent(browserHasGeolocation ?
+                    'Error: The Geolocation service failed.' :
+                    'Error: Your browser doesn\'t support geolocation.');
+                infoWindow.open(map);
+            }
+
+        </script>
+        <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyArQ7b-ddANmqe9Qi3bhsoQtfeO9o4JKsw&callback=initMap">
+            </script>
+    </div>
+
+
+
+
+
 </body>
