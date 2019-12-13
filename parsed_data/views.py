@@ -5,8 +5,6 @@ from django.contrib.auth.decorators import login_required
 from .models import Post
 from django.core.paginator import Paginator
 
-# Create your views here.
-
 def login(request):
     return render(request, 'login.html')
 
