@@ -47,7 +47,9 @@ body{
 .container {
   font-family: 'Jua', sans-serif;
 }
-
+.container-xl {
+  font-family: 'Jua', sans-serif;
+}
 .card-body {
   padding: 1rem;
 }

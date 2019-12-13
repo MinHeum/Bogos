@@ -20,6 +20,28 @@ def detail(request, post_id):
 def new(request):
     return render(request, 'post/new.html')
 
+def edit(request, post_id) :
+    post_detail = get_object_or_404(Post, pk = post_id)
+    if request.method == "POST":
+        form = Post(request.POST)
+        if form.is_valid():
+            post.user_name = request.user.username
+            post.title = request.GET['title']
+            post.body = request.GET['body']
+            post.pub_date = timezone.datetime.now()
+            post.save()
+            return redirect('http://bogo.us-east-2.elasticbeanstalk.com/parsed_data/post/' + str(post.id))
+
+    # 수정사항을 입력하기 위해 페이지에 처음 접속했을 때
+    else:
+        form = Post()
+        return render(request, 'post/edit.html', {'post': post_detail})
+
+def delete(request, post_id):
+    post = get_object_or_404(Post, pk = post_id)
+    post.delete()
+    return redirect('http://bogo.us-east-2.elasticbeanstalk.com/parsed_data/post/')
+
 def create(request):
     post = Post()
     post.user_name = request.user.username

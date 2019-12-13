@@ -30,7 +30,9 @@ urlpatterns = [
     path('parsed_data/ministop/', parsed_data.views.ministop, name="ministop"),
 
     path('parsed_data/post/',parsed_data.views.post, name = 'post'),
-    path('parsed_data/post/<int:post_id>',parsed_data.views.detail, name = 'post_detail'),
+    path('parsed_data/post/<int:post_id>', parsed_data.views.detail, name='post_detail'),
+    path('parsed_data/post/<int:post_id>/delete', parsed_data.views.delete, name='post_delete'),
+    path('parsed_data/post/<int:post_id>/edit', parsed_data.views.edit, name='post_update'),
     path('parsed_data/post/new',parsed_data.views.new, name = 'post_new'),
     path('parsed_data/post/create',parsed_data.views.create, name='post_create'),
 ]
