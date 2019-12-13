@@ -46,23 +46,9 @@
         </nav>
     </div>
     <div class="container">
-        <div id=post style="">
-            <div id="user_name">
-                <h3>작성자 : {{post.user_name}}</h3>
-            </div>
-            <div id="title"><br><br>
-                <h2>제목 : {{post.title}} </h2>
-            </div>
-            <div id="date" align="right" style="margin-bottom: 2rem">
-                <p> 작성 날짜 : {{post.pub_date}} </p>
-            </div>
-            <div id="summary">
-                <p>{{post.body|linebreaks}} </p>
-            </div>
-        </div>
-        <a href="/parsed_data/post" class="btn btn-outline-dark float-right" >목록</a>
-        <a href="{% url 'post_update' post.id %}" class="btn btn-outline-info float-right" style="margin-right: 1rem">수정</a>
-        <a href="{% url 'post_delete' post.id %}" class="btn btn-outline-danger float-right" style="margin-right: 1rem">삭제</a>
+        정말 삭제하시겠습니까?
+        <a href="/parsed_data/post" class="btn btn-outline-dark float-right" >아니오</a>
+        <a href="/parsed_data/post" class="btn btn-outline-dark float-right" >예</a>
     </div>
 </div>
 {% endblock %}
